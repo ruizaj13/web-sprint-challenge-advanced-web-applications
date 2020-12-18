@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useHistory} from 'react-router-dom';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import {fetchBubbles} from '../services/fetchBubbles'
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
@@ -10,8 +11,7 @@ const BubblePage = () => {
   // fetch your colors data from the server when the component mounts
   // set that data to the colorList state property
   useEffect(() => {
-    axiosWithAuth()
-      .get('/colors')
+    fetchBubbles()
       .then(res => {
         setColorList(res.data)
       })
