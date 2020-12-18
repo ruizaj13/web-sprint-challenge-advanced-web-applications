@@ -7,9 +7,8 @@ import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
-  const {push} = useHistory();
-  // fetch your colors data from the server when the component mounts
-  // set that data to the colorList state property
+  // const {push} = useHistory();
+
   useEffect(() => {
     fetchBubbles()
       .then(res => {
@@ -18,16 +17,16 @@ const BubblePage = () => {
       .catch(err => {console.log(err)})
   },[])
 
-  const logoutBtn = (e) => {
-    localStorage.clear();
-    push('/')
-  }
+  // const logoutBtn = (e) => {
+  //   localStorage.clear();
+  //   push('/')
+  // }
 
   return (
     <>
       <ColorList colors={colorList} updateColors={setColorList} />
       <Bubbles colors={colorList} />
-      <div><button onClick={logoutBtn}>Logout</button></div>
+      {/* <div data-testid='logoutBtn'><button onClick={logoutBtn}>Logout</button></div> */}
     </>
   );
 };
